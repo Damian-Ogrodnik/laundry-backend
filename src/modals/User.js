@@ -1,4 +1,5 @@
 const mongooose = require("mongoose");
+const { isEmail } = require("validator");
 
 const userSchema = new mongooose.Schema({
   name: {
@@ -9,7 +10,12 @@ const userSchema = new mongooose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    validate(email) {
+      if (!isEmail(email)) {
+        throw new Error("Expected format: email.");
+      }
+    }
   },
   password: {
     type: String,
