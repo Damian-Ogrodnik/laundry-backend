@@ -3,9 +3,9 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json({ extended: false }));
 app.use(cors());
-app.use("/", (req, res) => {
-  res.send("Hello");
-});
+
+app.use("/user", require("./routes/user"));
 
 module.exports = app;
