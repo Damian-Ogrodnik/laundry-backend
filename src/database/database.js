@@ -2,6 +2,7 @@ const config = require("../config/config");
 const mongoose = require("mongoose");
 
 mongoose.Promise = global.Promise;
+mongoose.set("useCreateIndex", true);
 mongoose
   .connect(config.MONGO_URI, {
     useNewUrlParser: true,
