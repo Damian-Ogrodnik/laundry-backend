@@ -5,7 +5,6 @@ async function getUsers(req, res, next) {
     const users = await User.find();
     res.status(201).json({ users });
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({ msg: err.message });
     next(err);
   }

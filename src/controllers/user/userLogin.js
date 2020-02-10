@@ -4,7 +4,7 @@ const config = require("../../config/config");
 
 const User = require("../../modals/User");
 
-async function login(req, res, next) {
+async function userLogin(req, res, next) {
   try {
     const { name, password } = req.body;
     let user = await User.findOne({ name });
@@ -29,10 +29,9 @@ async function login(req, res, next) {
       }
     );
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({ msg: err.message });
     next(err);
   }
 }
 
-module.exports = login;
+module.exports = userLogin;

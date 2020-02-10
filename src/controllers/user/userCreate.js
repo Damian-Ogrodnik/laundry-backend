@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 const config = require("../../config/config");
 
-async function createAccount(req, res, next) {
+async function userCreate(req, res, next) {
   try {
     const user = new User(req.body);
     await user.save();
@@ -23,4 +23,4 @@ async function createAccount(req, res, next) {
   }
 }
 
-module.exports = createAccount;
+module.exports = userCreate;

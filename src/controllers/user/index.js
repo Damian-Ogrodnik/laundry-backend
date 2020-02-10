@@ -1,6 +1,13 @@
-const createAccount = require("./createAccount");
 const getUsers = require("./getUsers");
-const login = require("./login");
-const profile = require("./profile");
+const userCreate = require("./userCreate");
+const userDelete = require("./userDelete");
+const userLogin = require("./userLogin");
+const userProfile = require("./userProfile");
 
-module.exports = { createAccount, getUsers, login, profile };
+module.exports = {
+  getUsers,
+  userCreate,
+  userDelete,
+  userLogin,
+  userProfile
+};
