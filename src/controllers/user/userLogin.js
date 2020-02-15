@@ -10,7 +10,7 @@ async function userLogin(req, res, next) {
     let user = await User.findOne({ name });
 
     if (!user) {
-      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
+      return res.status(404).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
 
     const compared = await bcrypt.compare(password, user.password);

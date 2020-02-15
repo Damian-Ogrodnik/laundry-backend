@@ -7,5 +7,6 @@ app.use(express.json({ extended: false }));
 app.use(cors());
 
 app.use("/user", require("./routes/user"));
+app.use("/booking", require("./routes/booking"));
 
 module.exports = app;
