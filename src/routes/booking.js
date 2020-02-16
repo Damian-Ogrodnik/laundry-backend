@@ -5,7 +5,7 @@ const bookingControllers = require("../controllers/booking");
 
 const auth = require("../middleware/auth");
 
-router.get("/", auth, bookingControllers.getDate);
+router.get("/:date", auth, bookingControllers.getDate);
 
 router.post("/", auth, bookingControllers.bookDate);
 
