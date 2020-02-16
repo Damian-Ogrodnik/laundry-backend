@@ -10,14 +10,17 @@ const bookingSchema = new mongooose.Schema({
   slots: [
     {
       number: {
-        type: Number
+        type: Number,
+        required: true
       },
       taken: {
-        type: Boolean
+        type: Boolean,
+        required: true
       },
       user: {
         type: Schema.Types.ObjectId,
-        ref: "user"
+        ref: "user",
+        required: true
       }
     }
   ]
