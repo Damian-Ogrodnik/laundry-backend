@@ -1,8 +1,10 @@
 const Booking = require("../../modals/Booking");
+const User = require("../../modals/User");
 
 async function bookDate(req, res, next) {
   try {
     let booking = await Booking.findOne({ date: req.body.date });
+    let user = await User.findById(req.user);
 
     if (!booking) {
       return res.status(400).json({ msg: "Can not find this date" });
@@ -21,6 +23,8 @@ async function bookDate(req, res, next) {
 
     await booking.slots.push(slot);
     await booking.save();
+    await user.slots.push(slot);
+    await user.save();
     return res.status(200).json({ slot });
   } catch (err) {
     res.status(500).json({ msg: err.message });

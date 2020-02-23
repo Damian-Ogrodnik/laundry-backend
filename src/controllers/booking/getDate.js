@@ -2,8 +2,7 @@ const Booking = require("../../modals/Booking");
 
 async function getDate(req, res, next) {
   try {
-    console.log(req.params);
-    let booking = await Booking.findOne({ date: req.body.date });
+    let booking = await Booking.findOne({ date: req.params.date });
 
     if (!booking) {
       booking = new Booking(req.params);

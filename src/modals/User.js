@@ -1,4 +1,5 @@
 const mongooose = require("mongoose");
+const Schema = mongooose.Schema;
 const { genSalt, hash } = require("bcryptjs");
 const { isEmail } = require("validator");
 
@@ -25,7 +26,24 @@ const userSchema = new mongooose.Schema({
   date: {
     type: Date,
     default: Date.now
-  }
+  },
+  slots: [
+    {
+      number: {
+        type: Number,
+        required: true
+      },
+      taken: {
+        type: Boolean,
+        required: true
+      },
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        required: true
+      }
+    }
+  ]
 });
 
 userSchema.pre("save", async function(next) {
