@@ -9,10 +9,13 @@ async function bookDate(req, res, next) {
     if (!booking) {
       return res.status(400).json({ msg: "Can not find this date" });
     }
+
     let slot = {
       number: req.body.number,
       taken: true,
-      user: req.user
+      user: req.user,
+      date: req.body.date,
+      hours: req.body.hours
     };
 
     booking.slots.forEach(slot => {
@@ -23,6 +26,9 @@ async function bookDate(req, res, next) {
 
     await booking.slots.push(slot);
     await booking.save();
+    if (!user.slots) {
+      user.slots = [];
+    }
     await user.slots.push(slot);
     await user.save();
     return res.status(200).json({ slot });

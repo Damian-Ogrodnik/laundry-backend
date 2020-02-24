@@ -21,6 +21,14 @@ const bookingSchema = new mongooose.Schema({
         type: Schema.Types.ObjectId,
         ref: "user",
         required: true
+      },
+      date: {
+        type: String,
+        required: true
+      },
+      hours: {
+        type: String,
+        required: true
       }
     }
   ]
