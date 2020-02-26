@@ -19,6 +19,11 @@ async function bookDate(req, res, next) {
     };
 
     booking.slots.forEach(slot => {
+      if (String(slot.user) === req.user) {
+        return res
+          .status(400)
+          .json({ msg: "You can not book two slots for the one day" });
+      }
       if (slot.number === req.body.number) {
         return res.status(400).json({ msg: "Slot is taken" });
       }
@@ -33,8 +38,7 @@ async function bookDate(req, res, next) {
     await user.save();
     return res.status(200).json({ slot });
   } catch (err) {
-    res.status(500).json({ msg: err.message });
-    next(err);
+    return res.status(500).json({ msg: err.message });
   }
 }
 
