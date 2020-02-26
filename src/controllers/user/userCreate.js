@@ -13,7 +13,7 @@ async function userCreate(req, res, next) {
       { expiresIn: 360000 },
       (error, token) => {
         if (error) throw error;
-        res.status(201).json({ token });
+        res.status(201).json({ token, id: user.id });
       }
     );
   } catch (err) {
