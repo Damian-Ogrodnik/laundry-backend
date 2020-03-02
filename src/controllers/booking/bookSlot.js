@@ -1,7 +1,7 @@
 const Booking = require("../../modals/Booking");
 const User = require("../../modals/User");
 
-async function bookDate(req, res, next) {
+async function bookSlot(req, res, next) {
   try {
     let booking = await Booking.findOne({ date: req.body.date });
     let user = await User.findById(req.user);
@@ -42,4 +42,4 @@ async function bookDate(req, res, next) {
   }
 }
 
-module.exports = bookDate;
+module.exports = bookSlot;

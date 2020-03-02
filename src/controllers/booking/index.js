@@ -1,9 +1,11 @@
 const getDate = require("./getDate");
-const bookDate = require("./bookDate");
+const bookSlot = require("./bookSlot");
 const getUserBookings = require("./getUserBookings");
+const deleteSlot = require("./deleteSlot");
 
 module.exports = {
   getDate,
-  bookDate,
-  getUserBookings
+  bookSlot,
+  getUserBookings,
+  deleteSlot
 };

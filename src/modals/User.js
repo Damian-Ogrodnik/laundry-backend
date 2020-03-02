@@ -55,7 +55,6 @@ const userSchema = new mongooose.Schema({
 });
 
 userSchema.pre("save", async function(next) {
-  console.log("presave");
   const user = this;
   if (user.isModified("password")) {
     const saltRounds = 8;

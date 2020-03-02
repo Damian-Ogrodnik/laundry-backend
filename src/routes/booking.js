@@ -8,6 +8,7 @@ const auth = require("../middleware/auth");
 router.get("/user-bookings", auth, bookingControllers.getUserBookings);
 router.get("/:date", auth, bookingControllers.getDate);
 
-router.post("/", auth, bookingControllers.bookDate);
+router.post("/", auth, bookingControllers.bookSlot);
+router.delete("/", auth, bookingControllers.deleteSlot);
 
 module.exports = router;
