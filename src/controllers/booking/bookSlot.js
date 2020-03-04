@@ -1,17 +1,15 @@
-const Booking = require("../../modals/Booking");
-const User = require("../../modals/User");
+const Slot = require("../../modals/Slot");
 
 async function bookSlot(req, res, next) {
   try {
     let bookingAvaiable = true;
-    let booking = await Booking.findOne({ date: req.body.date });
-    let user = await User.findById(req.user);
+    let slot = await Slot.find({ date: req.body.date });
 
-    if (!booking) {
+    if (!slot) {
       return res.status(400).json({ msg: "Can not find this date" });
     }
 
-    let slot = {
+    let slotData = {
       number: req.body.number,
       taken: true,
       user: req.user,
@@ -19,7 +17,7 @@ async function bookSlot(req, res, next) {
       hours: req.body.hours
     };
 
-    booking.slots.forEach(slot => {
+    slot.forEach(slot => {
       if (String(slot.user) === req.user) {
         bookingAvaiable = false;
         return res
@@ -33,16 +31,12 @@ async function bookSlot(req, res, next) {
     });
 
     if (bookingAvaiable) {
-      await booking.slots.push(slot);
-      await booking.save();
-      if (!user.slots) {
-        user.slots = [];
-      }
-      await user.slots.push(slot);
-      await user.save();
+      const slot = new Slot(slotData);
+      await slot.save();
       return res.status(200).json({ slot });
     }
   } catch (err) {
+    console.log(err.message);
     return res.status(500).json({ msg: err.message });
   }
 }

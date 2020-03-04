@@ -27,31 +27,7 @@ const userSchema = new mongooose.Schema({
     type: Date,
     default: Date.now
   },
-  slots: [
-    {
-      number: {
-        type: Number,
-        required: true
-      },
-      taken: {
-        type: Boolean,
-        required: true
-      },
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-        required: true
-      },
-      date: {
-        type: String,
-        required: true
-      },
-      hours: {
-        type: String,
-        required: true
-      }
-    }
-  ]
+  slots: [{ type: Schema.Types.ObjectId, ref: "slot" }]
 });
 
 userSchema.pre("save", async function(next) {

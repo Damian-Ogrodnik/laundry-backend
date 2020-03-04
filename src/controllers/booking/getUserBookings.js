@@ -1,13 +1,12 @@
-const Booking = require("../../modals/Booking");
-const User = require("../../modals/User");
+const Slot = require("../../modals/Slot");
 
 async function getUserBookings(req, res, next) {
   try {
-    let user = await User.findById(req.user);
-    if (!user) {
+    let slots = await Slot.find({ user: req.user });
+    if (!slots) {
       return res.status(200).json({ msg: "Did not found any bookings " });
     }
-    res.status(200).json(user.slots);
+    res.status(200).json(slots);
   } catch (err) {
     res.status(500).json({ msg: err.message });
     next(err);

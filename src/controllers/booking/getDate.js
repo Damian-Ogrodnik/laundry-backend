@@ -1,15 +1,13 @@
-const Booking = require("../../modals/Booking");
+const Slot = require("../../modals/Slot");
 
 async function getDate(req, res, next) {
   try {
-    let booking = await Booking.findOne({ date: req.params.date });
+    let slots = await Slot.find({ date: req.params.date });
 
-    if (!booking) {
-      booking = new Booking(req.params);
-      await booking.save();
-      return res.status(200).json({ booking });
+    if (!slots) {
+      return res.status(200).json([]);
     }
-    res.status(200).json({ booking });
+    res.status(200).json({ slots });
   } catch (err) {
     res.status(500).json({ msg: err.message });
     next(err);
