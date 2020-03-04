@@ -9,6 +9,6 @@ router.get("/user-bookings", auth, bookingControllers.getUserBookings);
 router.get("/:date", auth, bookingControllers.getDate);
 
 router.post("/", auth, bookingControllers.bookSlot);
-router.delete("/", auth, bookingControllers.deleteSlot);
+router.delete("/:date/:id", auth, bookingControllers.deleteSlot);
 
 module.exports = router;

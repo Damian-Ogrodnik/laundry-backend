@@ -3,16 +3,16 @@ const User = require("../../modals/User");
 
 async function deleteSlot(req, res, next) {
   try {
-    let date = await Booking.findOne({ date: req.body.date });
+    let date = await Booking.findOne({ date: req.params.date });
     let user = await User.findById(req.user);
 
     if (!user || !date) {
-      return res.status(200).json({ msg: "Did not found any bookings " });
+      res.status(200).json({ msg: "Did not found any bookings " });
     }
 
     let newUserBookings = [];
     await user.slots.forEach(bookedSlot => {
-      if (bookedSlot.id !== req.body.id) newUserBookings.push(bookedSlot);
+      if (bookedSlot.id !== req.params.id) newUserBookings.push(bookedSlot);
     });
     user.slots = newUserBookings;
     await user.save();
