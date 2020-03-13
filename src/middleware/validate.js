@@ -7,7 +7,6 @@ async function validate(req, res, next) {
       next();
     }
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({ msg: err.message });
     next(err);
   }
