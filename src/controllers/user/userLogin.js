@@ -25,7 +25,7 @@ async function userLogin(req, res, next) {
       { expiresIn: 360000 },
       (error, token) => {
         if (error) throw error;
-        res.json({ token, id: user.id });
+        res.json({ token, id: user.id, name });
       }
     );
   } catch (err) {

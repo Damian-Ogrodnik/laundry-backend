@@ -17,7 +17,6 @@ async function userCreate(req, res, next) {
       }
     );
   } catch (err) {
-    console.log(err.message);
     res.status(500).json({ msg: err.message });
     next(err);
   }

@@ -36,7 +36,6 @@ async function bookSlot(req, res, next) {
       return res.status(200).json({ slot });
     }
   } catch (err) {
-    console.log(err.message);
     return res.status(500).json({ msg: err.message });
   }
 }
