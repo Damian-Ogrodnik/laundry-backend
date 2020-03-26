@@ -6,7 +6,7 @@ async function userChange(req, res, next) {
     if (req.body.password === req.body.newPassword) {
       return res
         .status(400)
-        .json({ msg: "New password is the same as old one" });
+        .json({ msg: "New password is the same as the old one" });
     }
 
     let user = await User.findById(req.user);

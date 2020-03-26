@@ -17,8 +17,12 @@ async function userCreate(req, res, next) {
       }
     );
   } catch (err) {
-    res.status(500).json({ msg: err.message });
-    next(err);
+    if (err.name === "MongoError" && err.code === 11000) {
+      res.status(500).json({ msg: "Name or email has been already taken" });
+    } else {
+      res.status(500).json({ msg: err.message });
+    }
+    next();
   }
 }
 
