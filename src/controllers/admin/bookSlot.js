@@ -7,6 +7,8 @@ async function bookSlot(req, res, next) {
     let slot = await Slot.find({ date: req.body.date });
     let bookingAvaiable = true;
 
+    if (!user) return res.status(400).json({ msg: "Invalid user name" });
+
     let slotData = {
       number: req.body.number,
       taken: true,
