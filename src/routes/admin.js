@@ -7,4 +7,6 @@ const adminAuth = require("../middleware/adminAuth");
 
 router.post("/book", adminAuth, adminControllers.bookSlot);
 
+router.delete("/delete/:id", adminAuth, adminControllers.deleteSlot);
+
 module.exports = router;
