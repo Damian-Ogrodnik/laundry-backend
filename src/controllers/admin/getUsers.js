@@ -3,7 +3,7 @@ const User = require("../../modals/User");
 async function getUsers(req, res, next) {
   try {
     let users = await User.find({
-      name: { $regex: req.body.name || "" },
+      name: { $regex: req.query.name || "" },
     });
     let filteredUsers = users.map(({ name, _id }) => {
       return {
