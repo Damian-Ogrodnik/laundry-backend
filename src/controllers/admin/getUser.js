@@ -2,7 +2,7 @@ const User = require("../../modals/User");
 
 async function getUser(req, res, next) {
   try {
-    let user = await User.findById(req.body.id);
+    let user = await User.findById(req.query.id);
     if (!user) {
       return res.status(200).json({ msg: "Did not found user " });
     }
