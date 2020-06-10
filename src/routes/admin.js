@@ -8,6 +8,7 @@ const adminAuth = require("../middleware/adminAuth");
 router.get("/booking/:id", adminAuth, adminControllers.getBookingDetails);
 router.get("/user", adminAuth, adminControllers.getUser);
 router.get("/users", adminAuth, adminControllers.getUsers);
+router.get("/user-bookings", adminAuth, adminControllers.getUserBookings);
 
 router.post("/book", adminAuth, adminControllers.bookSlot);
 
