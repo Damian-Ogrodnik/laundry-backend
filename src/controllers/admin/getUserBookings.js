@@ -2,7 +2,7 @@ const Slot = require("../../modals/Slot");
 
 async function getUserBookings(req, res, next) {
   try {
-    let slots = await Slot.find({ user: req.body.id });
+    let slots = await Slot.find({ user: req.query.id });
     if (!slots.length) {
       return res.status(200).json({ msg: "Did not found any bookings " });
     }
