@@ -5,13 +5,15 @@ async function getUsers(req, res, next) {
     let users = await User.find({
       name: { $regex: req.query.name || "" },
     });
-    let filteredUsers = users.map(({ name, _id, isBlocked }) => {
-      return {
-        id: _id,
-        name,
-        isBlocked,
-      };
-    });
+    let filteredUsers = users
+      .map(({ name, _id, isBlocked }) => {
+        return {
+          id: _id,
+          name,
+          isBlocked,
+        };
+      })
+      .filter(({ name }) => name !== "admin");
     if (!users) {
       return res.status(200).json({ msg: "Did not found any users " });
     }
