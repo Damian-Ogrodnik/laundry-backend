@@ -7,7 +7,7 @@ const userSchema = new mongooose.Schema({
   name: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   email: {
     type: String,
@@ -17,20 +17,24 @@ const userSchema = new mongooose.Schema({
       if (!isEmail(email)) {
         throw new Error("Expected format: email.");
       }
-    }
+    },
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   date: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
-  slots: [{ type: Schema.Types.ObjectId, ref: "slot" }]
+  isBlocked: {
+    type: Boolean,
+    default: false,
+  },
+  slots: [{ type: Schema.Types.ObjectId, ref: "slot" }],
 });
 
-userSchema.pre("save", async function(next) {
+userSchema.pre("save", async function (next) {
   const user = this;
   if (user.isModified("password")) {
     const saltRounds = 8;

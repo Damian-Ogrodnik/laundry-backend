@@ -1,3 +1,4 @@
+const blockUser = require("./blockUser");
 const bookSlot = require("./bookSlot");
 const changeUserPassword = require("./changeUserPassword");
 const deleteSlot = require("./deleteSlot");
@@ -7,6 +8,7 @@ const getUser = require("./getUser");
 const getUserBookings = require("./getUserBookings");
 
 module.exports = {
+  blockUser,
   bookSlot,
   changeUserPassword,
   deleteSlot,
