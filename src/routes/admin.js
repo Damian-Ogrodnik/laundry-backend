@@ -13,6 +13,7 @@ router.get("/user-bookings", adminAuth, adminControllers.getUserBookings);
 router.post("/book", adminAuth, adminControllers.bookSlot);
 router.post("/user-block", adminAuth, adminControllers.blockUser);
 router.post("/user-password", adminAuth, adminControllers.changeUserPassword);
+router.post("/user-unblock", adminAuth, adminControllers.unblockUser);
 
 router.delete("/delete/:id", adminAuth, adminControllers.deleteSlot);
 

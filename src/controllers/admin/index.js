@@ -6,6 +6,7 @@ const getBookingDetails = require("./getBookingDetails");
 const getUsers = require("./getUsers");
 const getUser = require("./getUser");
 const getUserBookings = require("./getUserBookings");
+const unblockUser = require("./unblockUser");
 
 module.exports = {
   blockUser,
@@ -16,4 +17,5 @@ module.exports = {
   getUserBookings,
   getUsers,
   getUser,
+  unblockUser,
 };
