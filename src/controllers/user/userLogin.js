@@ -12,6 +12,9 @@ async function userLogin(req, res, next) {
     if (!user) {
       return res.status(404).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
+    if (user.isBlocked) {
+      return res.status(404).json({ errors: [{ msg: "User is blocked" }] });
+    }
 
     const compared = await bcrypt.compare(password, user.password);
 
