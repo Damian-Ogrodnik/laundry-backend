@@ -5,10 +5,11 @@ async function getUsers(req, res, next) {
     let users = await User.find({
       name: { $regex: req.query.name || "" },
     });
-    let filteredUsers = users.map(({ name, _id }) => {
+    let filteredUsers = users.map(({ name, _id, isBlocked }) => {
       return {
         id: _id,
         name,
+        isBlocked,
       };
     });
     if (!users) {
