@@ -1,4 +1,5 @@
 module.exports = {
+  MONGO_INITDB_DATABASE: process.env.MONGO_INITDB_DATABASE,
   MONGO_URI: process.env.MONGO_URI,
-  PORT: process.env.PORT,
+  PORT: "7000",
 };
